@@ -10,4 +10,5 @@ class Hotels(models.Model):
     country = models.ForeignKey(Country, on_delete=models.DO_NOTHING)
     hotelname = models.CharField(max_length=50)
     cost = models.FloatField()
+    # hello = models.CharField(max_length=15)
     
