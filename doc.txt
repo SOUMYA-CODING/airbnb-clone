@@ -1,0 +1,10 @@
+Api Links :-
+
+admin : http://127.0.0.1:8000/admin/
+Country List : http://127.0.0.1:8000/countryList/
+Hotel List : http://127.0.0.1:8000/hotelList/
+
+
+Admin Details :-
+username : natsu
+password : 1992
