@@ -1,5 +1,7 @@
 import React from 'react'
-import { Route, Routes } from 'react-router-dom'
+// import { Route, Routes } from 'react-router-dom'
+import AdminHome from './admin/components/AdminHome/AdminHome'
+import './index.css'
 
 const App = () => {
   return (
@@ -7,7 +9,7 @@ const App = () => {
       {/* <Routes>
         <Route exact path="/" />
       </Routes> */}
-      <h1>Index</h1>
+      <AdminHome />
     </>
   )
 }
