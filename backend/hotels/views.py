@@ -30,8 +30,14 @@ def CountryList(request, pk=None):
 
 # Hotel List
 @api_view(['GET', 'POST'])
-def HotelList(request):
+def HotelList(request, pk=None):
     if request.method == "GET":
+        id = pk
+        if id is not None:
+            list = Hotels.objects.get(id=id)
+            serializer = HotelsSerializer(list, context={'request': request})
+            return Response(serializer.data)
+
         list = Hotels.objects.all()
         serializer = HotelsSerializer(
             list, many=True, context={'request': request})
