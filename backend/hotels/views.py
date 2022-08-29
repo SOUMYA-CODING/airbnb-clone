@@ -58,7 +58,7 @@ def CategoryList(request):
 
 
 # Hotel List
-@api_view(['GET', 'POST'])
+@api_view(['GET', 'POST', 'PUT', 'DELETE'])
 def HotelList(request, pk=None):
     # Get the ID
     id = pk
