@@ -1,8 +1,8 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from . models import Country, Hotels
-from . serializer import CountrySerializer, HotelsSerializer
+from . models import Country, Category, Hotels
+from . serializer import CountrySerializer, CategorySerializer, HotelsSerializer
 
 
 # Country List
@@ -48,6 +48,15 @@ def CountryList(request, pk=None):
         return Response({'MESSAGE': 'Data Deleted'})
 
 
+# Category
+@api_view(['GET'])
+def CategoryList(request):
+    if request.method == "GET":
+        list = Category.objects.all()
+        serializer = CategorySerializer(list, many=True)
+        return Response(serializer.data)
+
+
 # Hotel List
 @api_view(['GET', 'POST'])
 def HotelList(request, pk=None):
@@ -89,3 +98,15 @@ def HotelList(request, pk=None):
         data = Hotels.objects.get(id=id)
         data.delete()
         return Response({'MESSAGE': 'Data Deleted'})
+
+
+# Hotel Filter
+@api_view(['GET'])
+def HotelFilter(request, categoryID):
+    catID = categoryID
+    if catID is not None:
+        list = Hotels.objects.filter(category=catID)
+        serializer = HotelsSerializer(
+            list, many=True, context={'request': request})
+        return Response(serializer.data)
+    return Response({'msg': 'No data found'})
