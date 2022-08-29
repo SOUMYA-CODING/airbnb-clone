@@ -102,10 +102,22 @@ def HotelList(request, pk=None):
 
 # Hotel Filter
 @api_view(['GET'])
-def HotelFilter(request, categoryID):
+def HotelCategoryFilter(request, categoryID):
     catID = categoryID
     if catID is not None:
         list = Hotels.objects.filter(category=catID)
+        serializer = HotelsSerializer(
+            list, many=True, context={'request': request})
+        return Response(serializer.data)
+    return Response({'msg': 'No data found'})
+
+
+# Country Filter
+@api_view(['GET'])
+def HotelCountryFilter(request, countryID):
+    contID = countryID
+    if contID is not None:
+        list = Hotels.objects.filter(country=contID)
         serializer = HotelsSerializer(
             list, many=True, context={'request': request})
         return Response(serializer.data)

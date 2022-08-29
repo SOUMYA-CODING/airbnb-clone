@@ -7,5 +7,6 @@ urlpatterns = [
     path('categoryList/', views.CategoryList),
     path('hotelList/', views.HotelList),
     path('hotelList/<int:pk>/', views.HotelList),
-    path('hotelList/<int:categoryID>/', views.HotelFilter),
+    path('hotelCategoryFilter/<int:categoryID>/', views.HotelCategoryFilter),
+    path('hotelCountryFilter/<int:countryID>/', views.HotelCountryFilter),
 ]
