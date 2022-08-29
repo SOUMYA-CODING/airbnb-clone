@@ -21,7 +21,7 @@ def CountryList(request, pk=None):
         list = Country.objects.all()
         serializer = CountrySerializer(
             list, many=True, context={'request': request})
-        return Response(serializer.data)
+        return Response(serializer.data,)
 
     # POST
     if request.method == "POST":
