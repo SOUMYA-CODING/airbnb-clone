@@ -3,6 +3,25 @@ from . models import Country, Category, Hotels
 # Register your models here.
 
 
-admin.site.register(Country)
-admin.site.register(Category)
-admin.site.register(Hotels)
+# Country Admin
+class CountryAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name')
+    ordering = ('-id',)
+
+
+# Country Admin
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name')
+    ordering = ('-id',)
+
+
+# Country Admin
+class HotelsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'placename', 'country', 'category',
+                    'hotelname', 'description', 'cost', 'photo')
+    ordering = ('category',)
+
+
+admin.site.register(Country, CountryAdmin)
+admin.site.register(Category, CategoryAdmin)
+admin.site.register(Hotels, HotelsAdmin)
