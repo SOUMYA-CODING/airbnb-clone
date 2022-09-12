@@ -19,10 +19,10 @@ class Category(models.Model):
 
 # Hotels
 class Hotels(models.Model):
-    placename = models.CharField(max_length=30)
+    placename = models.CharField(max_length=70)
     country = models.ForeignKey(Country, on_delete=models.DO_NOTHING)
     category = models.ForeignKey(Category, on_delete=models.DO_NOTHING, blank=True, null=True)
-    hotelname = models.CharField(max_length=50)
+    hotelname = models.CharField(max_length=70)
     description = models.TextField()
     cost = models.FloatField()
     photo = models.ImageField(upload_to="images/")
