@@ -53,7 +53,7 @@ def CountryList(request, pk=None):
 def CategoryList(request):
     if request.method == "GET":
         list = Category.objects.all()
-        serializer = CategorySerializer(list, many=True)
+        serializer = CategorySerializer(list, many=True, context={'request': request})
         return Response(serializer.data)
 
 
